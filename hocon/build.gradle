@@ -1,0 +1,10 @@
+configurations {
+    compileAndTest
+    compileOnly.extendsFrom compileAndTest
+    testRuntimeOnly.extendsFrom compileAndTest
+}
+
+dependencies {
+    api project(":core")
+    compileAndTest "com.typesafe:config:1.4.3"
+}

@@ -1,5 +1,6 @@
 def projects = [
         "core",
+        "hocon",
         "json",
         "properties",
         "toml",
