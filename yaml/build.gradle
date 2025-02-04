@@ -1,0 +1,5 @@
+dependencies {
+    api project(":core")
+    compileOnly "org.yaml:snakeyaml:2.3"
+    compileOnly "com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.18.2"
+}

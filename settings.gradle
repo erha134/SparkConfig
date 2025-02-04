@@ -1,0 +1,13 @@
+def projects = [
+        "core",
+        "json",
+        "properties",
+        "toml",
+        "yaml",
+]
+
+rootProject.name = "SparkConfig"
+
+projects.forEach {
+    include it
+}

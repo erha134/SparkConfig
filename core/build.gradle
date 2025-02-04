@@ -1,0 +1,3 @@
+dependencies {
+    api "com.github.erha134:EasyLib:1.0.0-beta.1"
+}
