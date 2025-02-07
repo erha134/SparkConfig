@@ -1,0 +1,10 @@
+configurations {
+    compileAndTest
+    compileOnly.extendsFrom compileAndTest
+    testRuntimeOnly.extendsFrom compileAndTest
+}
+
+dependencies {
+    api project(":core")
+    compileAndTest "org.yaml:snakeyaml:2.3"
+}

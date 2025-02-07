@@ -1,0 +1,10 @@
+configurations {
+    compileAndTest
+    compileOnly.extendsFrom compileAndTest
+    testRuntimeOnly.extendsFrom compileAndTest
+}
+
+dependencies {
+    api project(":core")
+    compileAndTest "blue.endless:jankson:1.2.3"
+}

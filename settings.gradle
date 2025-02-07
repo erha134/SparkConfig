@@ -1,10 +1,16 @@
 def projects = [
         "core",
-        "hocon",
-        "json",
-        "properties",
-        "toml",
-        "yaml",
+        "serializers-gson",
+        "serializers-fastjson",
+        "serializers-jackson-json",
+        "serializers-jackson-yaml",
+        "serializers-jackson-toml",
+        "serializers-jackson-properties",
+        "serializers-jankson",
+        "serializers-snakeyaml",
+        "serializers-toml4j",
+        "serializers-tomlj",
+        "serializers-typesafe-config",
 ]
 
 rootProject.name = "SparkConfig"

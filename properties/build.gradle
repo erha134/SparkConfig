@@ -1,4 +1,0 @@
-dependencies {
-    api project(":core")
-    compileOnly "com.fasterxml.jackson.dataformat:jackson-dataformat-properties:2.18.2"
-}
