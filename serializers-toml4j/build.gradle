@@ -1,0 +1,10 @@
+configurations {
+    compileAndTest
+    compileOnly.extendsFrom compileAndTest
+    testRuntimeOnly.extendsFrom compileAndTest
+}
+
+dependencies {
+    api project(":core")
+    compileAndTest "com.moandjiezana.toml:toml4j:0.7.2"
+}

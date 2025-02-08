@@ -1,6 +1,0 @@
-dependencies {
-    api project(":core")
-    compileOnly "com.moandjiezana.toml:toml4j:0.7.2"
-    compileOnly "org.tomlj:tomlj:1.1.1"
-    compileOnly "com.fasterxml.jackson.dataformat:jackson-dataformat-toml:2.18.2"
-}

@@ -1,0 +1,10 @@
+configurations {
+    compileAndTest
+    compileOnly.extendsFrom compileAndTest
+    testRuntimeOnly.extendsFrom compileAndTest
+}
+
+dependencies {
+    api project(":core")
+    compileAndTest "com.fasterxml.jackson.core:jackson-databind:2.18.2"
+}
