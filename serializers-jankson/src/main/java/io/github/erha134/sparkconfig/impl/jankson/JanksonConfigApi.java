@@ -11,6 +11,11 @@ public class JanksonConfigApi implements ConfigApi {
             .build();
 
     @Override
+    public String getExt() {
+        return "json5";
+    }
+
+    @Override
     public <T> T readInternal(Class<T> clazz, String config) {
         try {
             return jankson.fromJson(config, clazz);

@@ -16,6 +16,11 @@ public class GsonConfigApi implements ConfigApi {
             .create();
 
     @Override
+    public String getExt() {
+        return "json";
+    }
+
+    @Override
     public <T> T readInternal(Class<T> clazz, String config) {
         return gson.fromJson(config, clazz);
     }

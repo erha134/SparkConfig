@@ -13,6 +13,11 @@ public class JacksonPropertiesConfigApi implements ConfigApi {
             .build();
 
     @Override
+    public String getExt() {
+        return "properties";
+    }
+
+    @Override
     public <T> T readInternal(Class<T> clazz, String config) {
         try {
             return mapper.readValue(config, clazz);

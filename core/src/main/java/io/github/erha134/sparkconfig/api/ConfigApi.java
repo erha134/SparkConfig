@@ -15,12 +15,19 @@ import java.nio.file.Path;
  * 开发者指南 - 如何适配更多的解析器/（反）序列化器：
  * <ol>
  *     <li>实现 {@link ConfigApi} 接口</li>
+ *     <li>实现 {@link #getExt()} 方法</li>
  *     <li>实现 {@link #readInternal(Class, String)} 方法</li>
  *     <li>实现 {@link #write(Object)} 方法</li>
  * </ol>
  * @since 1.0.0
  */
 public interface ConfigApi {
+    /**
+     * 获取支持的配置文件扩展名。
+     * @return 扩展名
+     */
+    String getExt();
+
     // deserialization methods
 
     @ApiStatus.Internal

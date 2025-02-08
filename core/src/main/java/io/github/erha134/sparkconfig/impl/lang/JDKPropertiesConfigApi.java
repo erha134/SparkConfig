@@ -14,6 +14,11 @@ import java.util.stream.Collectors;
 @AutoService(ConfigApi.class)
 public class JDKPropertiesConfigApi implements ConfigApi {
     @Override
+    public String getExt() {
+        return "properties";
+    }
+
+    @Override
     public <T> T readInternal(Class<T> clazz, String config) {
         try {
             Properties properties = new Properties();
