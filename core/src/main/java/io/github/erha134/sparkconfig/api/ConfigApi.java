@@ -1,6 +1,6 @@
 package io.github.erha134.sparkconfig.api;
 
-import io.github.erha134.sparkconfig.api.util.ReflectUtils;
+import io.github.erha134.easylib.reflect.ReflectUtils;
 import org.jetbrains.annotations.ApiStatus;
 
 import java.io.*;
