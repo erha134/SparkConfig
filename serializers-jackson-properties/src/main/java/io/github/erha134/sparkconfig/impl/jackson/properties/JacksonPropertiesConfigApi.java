@@ -3,8 +3,10 @@ package io.github.erha134.sparkconfig.impl.jackson.properties;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.dataformat.javaprop.JavaPropsMapper;
+import com.google.auto.service.AutoService;
 import io.github.erha134.sparkconfig.api.ConfigApi;
 
+@AutoService(ConfigApi.class)
 public class JacksonPropertiesConfigApi implements ConfigApi {
     private static final JavaPropsMapper mapper = JavaPropsMapper.builder()
             .disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)

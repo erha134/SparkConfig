@@ -2,8 +2,10 @@ package io.github.erha134.sparkconfig.impl.jankson;
 
 import blue.endless.jankson.Jankson;
 import blue.endless.jankson.api.SyntaxError;
+import com.google.auto.service.AutoService;
 import io.github.erha134.sparkconfig.api.ConfigApi;
 
+@AutoService(ConfigApi.class)
 public class JanksonConfigApi implements ConfigApi {
     private static final Jankson jankson = Jankson.builder()
             .build();

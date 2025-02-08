@@ -3,8 +3,10 @@ package io.github.erha134.sparkconfig.impl.jackson.toml;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.dataformat.toml.TomlMapper;
+import com.google.auto.service.AutoService;
 import io.github.erha134.sparkconfig.api.ConfigApi;
 
+@AutoService(ConfigApi.class)
 public class JacksonTomlConfigApi implements ConfigApi {
     private static final TomlMapper mapper = TomlMapper.builder()
             .disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)

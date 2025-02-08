@@ -3,8 +3,10 @@ package io.github.erha134.sparkconfig.impl.jackson.json;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.json.JsonMapper;
+import com.google.auto.service.AutoService;
 import io.github.erha134.sparkconfig.api.ConfigApi;
 
+@AutoService(ConfigApi.class)
 public class JacksonJsonConfigApi implements ConfigApi {
     private static final JsonMapper mapper = JsonMapper.builder()
             .disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
