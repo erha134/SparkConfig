@@ -5,7 +5,6 @@ import org.jetbrains.annotations.ApiStatus;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
 import java.nio.file.Path;
 
 /**
@@ -59,7 +58,7 @@ public interface ConfigApi {
      * @throws IOException 文件读取失败
      */
     default <T> T read(Class<T> clazz, Path path) throws IOException {
-        return this.read(clazz, Files.newInputStream(path));
+        return this.read(clazz, path.toFile());
     }
 
     /**
@@ -71,7 +70,15 @@ public interface ConfigApi {
      * @throws IOException 文件读取失败
      */
     default <T> T read(Class<T> clazz, File file) throws IOException {
-        return this.read(clazz, file.toPath());
+        if (!file.exists()) {
+            if (!file.getParentFile().exists()) {
+                file.getParentFile().mkdirs();
+            }
+
+            this.write(ReflectUtils.newInstance(clazz), file);
+        }
+
+        return this.read(clazz, new FileInputStream(file));
     }
 
     /**
@@ -137,7 +144,7 @@ public interface ConfigApi {
      * @throws IOException 文件写入失败
      */
     default <T> void write(T object, Path path) throws IOException {
-        this.write(object, Files.newOutputStream(path));
+        this.write(object, path.toFile());
     }
 
     /**
@@ -148,7 +155,15 @@ public interface ConfigApi {
      * @throws IOException 文件写入失败
      */
     default <T> void write(T object, File file) throws IOException {
-        this.write(object, file.toPath());
+        if (!file.exists()) {
+            if (!file.getParentFile().exists()) {
+                file.getParentFile().mkdirs();
+            }
+
+            file.createNewFile();
+        }
+
+        this.write(object, new FileOutputStream(file));
     }
 
     /**
