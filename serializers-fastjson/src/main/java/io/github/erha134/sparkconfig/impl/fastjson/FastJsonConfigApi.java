@@ -7,6 +7,11 @@ import io.github.erha134.sparkconfig.api.ConfigApi;
 @AutoService(ConfigApi.class)
 public class FastJsonConfigApi implements ConfigApi {
     @Override
+    public String getExt() {
+        return "json";
+    }
+
+    @Override
     public <T> T readInternal(Class<T> clazz, String config) {
         return JSON.parseObject(config, clazz);
     }

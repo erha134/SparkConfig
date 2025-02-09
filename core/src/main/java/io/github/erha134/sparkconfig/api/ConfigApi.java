@@ -1,11 +1,10 @@
 package io.github.erha134.sparkconfig.api;
 
-import io.github.erha134.sparkconfig.api.util.ReflectUtils;
+import io.github.erha134.easylib.reflect.ReflectUtils;
 import org.jetbrains.annotations.ApiStatus;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
 import java.nio.file.Path;
 
 /**
@@ -15,12 +14,19 @@ import java.nio.file.Path;
  * 开发者指南 - 如何适配更多的解析器/（反）序列化器：
  * <ol>
  *     <li>实现 {@link ConfigApi} 接口</li>
+ *     <li>实现 {@link #getExt()} 方法</li>
  *     <li>实现 {@link #readInternal(Class, String)} 方法</li>
  *     <li>实现 {@link #write(Object)} 方法</li>
  * </ol>
  * @since 1.0.0
  */
 public interface ConfigApi {
+    /**
+     * 获取支持的配置文件扩展名。
+     * @return 扩展名
+     */
+    String getExt();
+
     // deserialization methods
 
     @ApiStatus.Internal
@@ -52,7 +58,7 @@ public interface ConfigApi {
      * @throws IOException 文件读取失败
      */
     default <T> T read(Class<T> clazz, Path path) throws IOException {
-        return this.read(clazz, Files.newInputStream(path));
+        return this.read(clazz, path.toFile());
     }
 
     /**
@@ -64,7 +70,15 @@ public interface ConfigApi {
      * @throws IOException 文件读取失败
      */
     default <T> T read(Class<T> clazz, File file) throws IOException {
-        return this.read(clazz, file.toPath());
+        if (!file.exists()) {
+            if (!file.getParentFile().exists()) {
+                file.getParentFile().mkdirs();
+            }
+
+            this.write(ReflectUtils.newInstance(clazz), file);
+        }
+
+        return this.read(clazz, new FileInputStream(file));
     }
 
     /**
@@ -130,7 +144,7 @@ public interface ConfigApi {
      * @throws IOException 文件写入失败
      */
     default <T> void write(T object, Path path) throws IOException {
-        this.write(object, Files.newOutputStream(path));
+        this.write(object, path.toFile());
     }
 
     /**
@@ -141,7 +155,15 @@ public interface ConfigApi {
      * @throws IOException 文件写入失败
      */
     default <T> void write(T object, File file) throws IOException {
-        this.write(object, file.toPath());
+        if (!file.exists()) {
+            if (!file.getParentFile().exists()) {
+                file.getParentFile().mkdirs();
+            }
+
+            file.createNewFile();
+        }
+
+        this.write(object, new FileOutputStream(file));
     }
 
     /**

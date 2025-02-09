@@ -2,7 +2,7 @@ package io.github.erha134.sparkconfig.impl.lang;
 
 import com.google.auto.service.AutoService;
 import io.github.erha134.sparkconfig.api.ConfigApi;
-import io.github.erha134.sparkconfig.api.util.ReflectUtils;
+import io.github.erha134.easylib.reflect.ReflectUtils;
 
 import java.io.IOException;
 import java.io.StringReader;
@@ -13,6 +13,11 @@ import java.util.stream.Collectors;
 
 @AutoService(ConfigApi.class)
 public class JDKPropertiesConfigApi implements ConfigApi {
+    @Override
+    public String getExt() {
+        return "properties";
+    }
+
     @Override
     public <T> T readInternal(Class<T> clazz, String config) {
         try {
