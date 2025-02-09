@@ -5,13 +5,18 @@ import io.github.erha134.sparkconfig.api.manager.AbstractConfigManager;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
 
 public class FileConfigManager<T> extends AbstractConfigManager<T> {
-    protected final File file;
+    protected final Path path;
+
+    public FileConfigManager(ConfigApi api, Class<T> clazz, Path path) {
+        super(api, clazz);
+        this.path = path;
+    }
 
     public FileConfigManager(ConfigApi api, Class<T> clazz, File file) {
-        super(api, clazz);
-        this.file = file;
+        this(api, clazz, file.toPath());
     }
 
     public FileConfigManager(ConfigApi api, Class<T> clazz, String file) {
@@ -20,11 +25,11 @@ public class FileConfigManager<T> extends AbstractConfigManager<T> {
 
     @Override
     public void load() throws IOException {
-        this.value = this.api.read(this.clazz, this.file);
+        this.value = this.api.read(this.clazz, this.path);
     }
 
     @Override
     public void save() throws IOException {
-        this.api.write(this.value, this.file);
+        this.api.write(this.value, this.path);
     }
 }

@@ -19,4 +19,9 @@ public abstract class AbstractConfigManager<T> implements ConfigManager<T> {
     public void set(T t) {
         this.value = t;
     }
+
+    @Override
+    public Class<T> getType() {
+        return this.clazz;
+    }
 }

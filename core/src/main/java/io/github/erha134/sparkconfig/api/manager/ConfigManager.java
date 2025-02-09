@@ -20,4 +20,6 @@ public interface ConfigManager<T> extends Supplier<T> {
         this.save();
         this.load();
     }
+
+    Class<T> getType();
 }
