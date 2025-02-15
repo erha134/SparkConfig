@@ -6,5 +6,5 @@ configurations {
 
 dependencies {
     api project(":core")
-    compileAndTest "org.yaml:snakeyaml:2.3"
+    compileAndTest "org.yaml:snakeyaml:2.4"
 }
