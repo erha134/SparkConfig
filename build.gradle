@@ -70,7 +70,7 @@ subprojects {
         annotationProcessor(compileOnly("org.projectlombok:lombok:1.18.36"))
         annotationProcessor(compileOnly("com.google.auto.service:auto-service:1.1.1"))
 
-        testImplementation platform('org.junit:junit-bom:5.11.4')
+        testImplementation platform('org.junit:junit-bom:5.12.0')
         testImplementation 'org.junit.jupiter:junit-jupiter'
         testAnnotationProcessor(testCompileOnly("org.projectlombok:lombok:1.18.36"))
     }
