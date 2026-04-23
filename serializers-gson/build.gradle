@@ -6,5 +6,5 @@ configurations {
 
 dependencies {
     api project(":core")
-    compileAndTest "com.google.code.gson:gson:2.12.1"
+    compileAndTest "com.google.code.gson:gson:2.14.0"
 }
